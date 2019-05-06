@@ -1,11 +1,8 @@
 const https = require('https');
 
-function getAndPrintHTMLChunks () {
+function getHTML (host, path, onCompleteCallback) {
 
-  var requestOptions = {
-    host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
-  };
+  var requestOptions = {host, path};
 
   /* Add your code here */
   https.get(requestOptions, function (response) {
@@ -19,9 +16,9 @@ function getAndPrintHTMLChunks () {
     });
 
     response.on('end', function () {
-      console.log(data.join(''));
+      onCompleteCallback(data.join(''));
     });
   });
 }
 
-getAndPrintHTMLChunks();
+module.exports = getHTML;
