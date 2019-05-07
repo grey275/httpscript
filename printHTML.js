@@ -11,4 +11,4 @@ var requestOptions = {
 
 const {host, path} = requestOptions
 
-getHTML(host, path, printHTML);
+module.exports = printHTML;
